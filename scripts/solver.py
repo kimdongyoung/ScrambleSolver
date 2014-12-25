@@ -1,6 +1,6 @@
 from MyDict import buildDict, isValidWord
 from Tile import Tile
-import os
+import os, sys
 
 myDict = {}
 tileGrid = []
@@ -63,21 +63,35 @@ def printValidWords(validWords):
 	print validWords
 	print len(validWords)
 
-# TODO: Create a function that takes in a string of 16 letters and convert to 4x4 letter grid.
+# A function that takes in a string of 16 letters and convert to 4x4 letter grid.
+def createLetterGrid(letters):
+	grid = []
+	i = 0;
+	for row in range(0,4):
+		grid.append([''] * 4)
+
+	for row in range(0,4):
+		for col in range(0,4):
+			grid[row][col] = letters[i]
+			i += 1
+	return grid
 
 if __name__ == '__main__':
-	myDict = buildDict('../dictionary/dictionary.txt')
-	letterGrid2D = [["T","O"],
-					["N","R"]]
-	letterGrid3D = [["T","E","S"],
-					["R","E","T"],
-					["S","H","E"]]
-	letterGrid4D = [["I","N","R","M"],
-					["T","E","G","A"],
-					["L","O","N","E"],
-					["P","S","D","S"]]
-	initGrid(letterGrid4D)
-	findCombinations()
-	printGrid(tileGrid)
-	printValidWords(validWords[:100])
-
+	if len(sys.argv) != 2 or len(sys.argv[1]) != 16:
+		print "Provide a string of 16 letters (the grid) as argument."
+	else:
+		myDict = buildDict('../dictionary/dictionary.txt')
+		letterGrid = createLetterGrid(sys.argv[1])
+		letterGrid2D = [["T","O"],
+						["N","R"]]
+		letterGrid3D = [["T","E","S"],
+						["R","E","T"],
+						["S","H","E"]]
+		letterGrid4D = [["I","N","R","M"],
+						["T","E","G","A"],
+						["L","O","N","E"],
+						["P","S","D","S"]]
+		initGrid(letterGrid)
+		findCombinations()
+		printGrid(tileGrid)
+		printValidWords(validWords[:100])

@@ -1,12 +1,17 @@
 == Scramble With Friends Solver
 This program produces solutions to Scramble With Friends. It sorts solutions by longest to shortest word.
 
-Input: an array of 4 arrays, i.e.
+Input: a 16 letter word, where each letter corresponds to a letter in the grid.
+The letter is ordered from left to right, top to bottom.
+Ex) INRMTEGALONEPSDS
 <tt>
 [	
 	['I','N','R','M'], 
+
 	['T','E','G','A'], 
+
 	['L','O','N','E'], 
+
 	['P','S','D','S']
 ]
 </tt>
@@ -14,10 +19,15 @@ Output:
 <tt>
 [
 	'INTEGRANDS',
+
 	'MAGNETONS',
+
 	'INTEGRAND',
+
 	'MAGNETON',
+
 	'INTERAGE',
+	
 	...
 	...
 ]
