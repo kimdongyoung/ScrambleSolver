@@ -7,7 +7,7 @@ Input: a 16 letter word, where each letter corresponds to a letter in the grid.
 The letter is ordered from left to right, top to bottom.
 Ex) 
 
-Input: INRMTEGALONEPSDS ->
+INRMTEGALONEPSDS ->
 <em>
 [	
 	['I','N','R','M'], 
