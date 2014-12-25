@@ -2,13 +2,16 @@
 This program produces solutions to Scramble With Friends. It sorts solutions by longest to shortest word.
 
 Input: an array of 4 arrays, i.e.
+<tt>
 [	
 	['I','N','R','M'], 
 	['T','E','G','A'], 
 	['L','O','N','E'], 
 	['P','S','D','S']
 ]
-Output: 
+</tt>
+Output:
+<tt>
 [
 	'INTEGRANDS',
 	'MAGNETONS',
@@ -18,6 +21,7 @@ Output:
 	...
 	...
 ]
+</tt>
 
 == Data Structures
 Dictionary - We build a simple hashmap using all the words from dictionary.txt.
@@ -55,10 +59,11 @@ For 3x3, 4x4, ... nxn, this is not so obvious. For a 2x2, every Tile in the grid
 == TODO
 1. Bonuses
 Each letter can have bonus associated with it.
-*DL = Doubles the value of the letter
-*TL = Triples the value of the letter
-*DW = Doubles the value of the word spelled with the letter
-*TW = Triples the value of the word spelled with the letter
+* DL = Doubles the value of the letter
+* TL = Triples the value of the letter
+* DW = Doubles the value of the word spelled with the letter
+* TW = Triples the value of the word spelled with the letter
 Next step would be to produce top words considering the bonuses.
+
 2. Optimization
 The current algorithm solves a 4x4 grid in about 90 seconds. We are currently considering memoization and dynamic programming techniques to cache solutions to subproblems. This is not obvious since each combination of letters produce a unique state in the grid.
