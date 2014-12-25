@@ -3,7 +3,9 @@ This program produces solutions to Scramble With Friends. It sorts solutions by 
 
 Input: a 16 letter word, where each letter corresponds to a letter in the grid.
 The letter is ordered from left to right, top to bottom.
-Ex) INRMTEGALONEPSDS ->
+Ex) 
+
+Input: INRMTEGALONEPSDS ->
 <em>
 [	
 	['I','N','R','M'], 
@@ -12,6 +14,7 @@ Ex) INRMTEGALONEPSDS ->
 	['P','S','D','S']
 ]
 </em>
+
 Output:
 <em>
 [
