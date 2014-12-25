@@ -3,35 +3,27 @@ This program produces solutions to Scramble With Friends. It sorts solutions by 
 
 Input: a 16 letter word, where each letter corresponds to a letter in the grid.
 The letter is ordered from left to right, top to bottom.
-Ex) INRMTEGALONEPSDS
-<tt>
+Ex) INRMTEGALONEPSDS ->
+<em>
 [	
 	['I','N','R','M'], 
-
 	['T','E','G','A'], 
-
 	['L','O','N','E'], 
-
 	['P','S','D','S']
 ]
-</tt>
+</em>
 Output:
-<tt>
+<em>
 [
 	'INTEGRANDS',
-
 	'MAGNETONS',
-
 	'INTEGRAND',
-
 	'MAGNETON',
-
 	'INTERAGE',
-	
 	...
 	...
 ]
-</tt>
+</em>
 
 == Data Structures
 Dictionary - We build a simple hashmap using all the words from dictionary.txt.
