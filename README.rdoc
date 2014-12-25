@@ -1,29 +1,64 @@
-This program will produce solutions to Scramble With Friends. It will sort results by longest to shortest word (TL, DL, etc. can be implemented easily later).
+== Scramble With Friends Solver
+This program produces solutions to Scramble With Friends. It sorts solutions by longest to shortest word.
 
-Input will be a an array of 4 arrays, i.e.
+Input: an array of 4 arrays, i.e.
 [	
-	['S','E','F','W'], 
-	['Z','A','I','P'], 
-	['T','E','S','T'], 
-	['B','A','M','F']
+	['I','N','R','M'], 
+	['T','E','G','A'], 
+	['L','O','N','E'], 
+	['P','S','D','S']
+]
+Output: 
+[
+	'INTEGRANDS',
+	'MAGNETONS',
+	'INTEGRAND',
+	'MAGNETON',
+	'INTERAGE',
+	...
+	...
 ]
 
-== Data Structure
-Trie - Using the words from dictionary.txt, we will build a trie. The trie will serve to efficiently check if a word is valid.
-Linked List to store matches?
+== Data Structures
+Dictionary - We build a simple hashmap using all the words from dictionary.txt.
+A trie was considered (and implemented - see scripts/Trie.py). However, it was found that a dictionary is much faster (O(1) average vs. O(k), where k is length of word).
+
+We simply store matches in a linked list. A more efficient solution would be binary search tree or perhaps a trie. But we predict that the alternative solutions will not significantly improve the efficiency, especially since we sort the matches in descending order by longest word first.
 
 == Algorithm
-Traverse the tiles. For each tile, test every single combination of words that can be generated from the tile. Test means using the trie to see if the word exists in the dictionary. If in trie, then add to linked list.
+Traverse the tiles. For each tile, test every single combination of words that can be generated from the tile. Test means using the trie to see if the word exists in the dictionary. If this is a valid word (in dictionary), then add to results linked list.
+
+In the game, we cannot use the same tile twice for a word. Thus, we keep whether we visited the tile using a <tt>visited</tt> boolean variable. After traversing all possible word combinations stemming from that specific tile, we set <tt>visited</tt> to <tt>False</tt> because words not stemming from this tile should be able to visit this tile. This explanation is confusing, we know, so please take a look at the source code in scripts/Solver.py.
 
 After traversing all tiles, sort pairs (index, length of word) on length of word (index is the index of the word in the linked list). 
 
-== Math
-There are x total combination of words that can be produced from each tile. We have 16 tiles so that x * 16 combinations.
-
-
 == Efficiency
 Finding Word Efficiency:
+Not sure, since Math section is incomplete. It's exponential for sure.
 
-Trie Efficiency:
+Dictionary Efficiency:
+O(1) on average. Not sure how Python implements hash maps (primary clustered vs. secondary non-clustered index).
 
 Sorting Efficiency:
+O(nlogn) using merge or quicksort. We use Python's sorting algorithm, which we assume to be at max O(nlogn).
+
+== Math
+This part attempts to figure out total possible words (of length greater than 1) that can be formed on a nxn grid. 
+For a 2x2, there are:
+* 4! 4 letters words
+* 4! 3 letter words
+* 4!/2! 2 letter words
+Thus, there are a total of 60 possible words of length greater than 1 that can be formed in 2x2.
+
+For 3x3, 4x4, ... nxn, this is not so obvious. For a 2x2, every Tile in the grid is a corner piece, so each can be treated equally. However, in nxn grids where n > 2, there are corner, edge, and center Tile pieces. This problem is unsolved at the moment.
+
+== TODO
+1. Bonuses
+Each letter can have bonus associated with it.
+*DL = Doubles the value of the letter
+*TL = Triples the value of the letter
+*DW = Doubles the value of the word spelled with the letter
+*TW = Triples the value of the word spelled with the letter
+Next step would be to produce top words considering the bonuses.
+2. Optimization
+The current algorithm solves a 4x4 grid in about 90 seconds. We are currently considering memoization and dynamic programming techniques to cache solutions to subproblems. This is not obvious since each combination of letters produce a unique state in the grid.
