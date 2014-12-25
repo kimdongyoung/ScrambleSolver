@@ -73,7 +73,7 @@ def buildTrie(path):
 	return trie
 
 if __name__ == '__main__':
-	myTrie = buildTrie('../dictionary/testDictionary.txt')
+	myTrie = buildTrie('../dictionary/dictionary.txt')
 	print myTrie.isValidWord("")
 	print myTrie.size()
 

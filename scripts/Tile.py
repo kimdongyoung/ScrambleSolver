@@ -4,4 +4,3 @@ class Tile(object):
 		self.y = y
 		self.letter = letter
 		self.visited = False
-		self.childrenVisited = [False] * 8
