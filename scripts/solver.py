@@ -49,19 +49,22 @@ def initGrid(letterGrid):
 			t = Tile(x, y, letterGrid[x][y])
 			tileGrid[x][y] = t
 
-# For debugging purposes.
 def printGrid(tileGrid):
+	print "====Grid===="
 	for x in range(0, numRow[0]):
 		row = ""
 		for y in range(0, numCol[0]):
 			row += tileGrid[x][y].letter + " "
 		print row
+	print ""
 
 def printValidWords(validWords):
 	validWords = list(set(validWords))
 	validWords.sort(key=len, reverse=True)
-	print validWords
-	print len(validWords)
+	print "====Solution===="
+	for word in validWords[:50]:
+		print word
+	print str(len(validWords)) + " matches found."
 
 # A function that takes in a string of 16 letters and convert to 4x4 letter grid.
 def createLetterGrid(letters):
@@ -94,4 +97,4 @@ if __name__ == '__main__':
 		initGrid(letterGrid)
 		findCombinations()
 		printGrid(tileGrid)
-		printValidWords(validWords[:100])
+		printValidWords(validWords)
