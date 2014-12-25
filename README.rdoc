@@ -1,5 +1,7 @@
 == Scramble With Friends Solver
-This program produces solutions to Scramble With Friends. It sorts solutions by longest to shortest word.
+This program produces solutions to Scramble With Friends. It sorts solutions by longest to shortest word. The algorithm currently takes 90 - 100 seconds.
+
+Run <tt>python Solver.py [16 letter word]</tt>
 
 Input: a 16 letter word, where each letter corresponds to a letter in the grid.
 The letter is ordered from left to right, top to bottom.
